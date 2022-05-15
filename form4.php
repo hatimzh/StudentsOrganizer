@@ -26,7 +26,7 @@ session_start();
 			error_reporting(0);
 			$nom = &$_SESSION["name"];
 			$maths = &$_SESSION["maths"];
-			$informatique = &$_SESSION["physics"];
+			$Physics = &$_SESSION["physics"];
 
 			echo
 				'<div class="contenu">
@@ -92,7 +92,7 @@ session_start();
 
 				$nom[] = $var1;
 				$maths[] = $var2;
-				$informatique[] = $var3;
+				$Physics[] = $var3;
 
 				}
 
@@ -102,7 +102,7 @@ session_start();
 						if($nom[$var]==$_POST["name1"]){
 
 							$maths[$var] = $_POST["math1"];
-							$informatique[$var] = $_POST["phy1"];
+							$Physics[$var] = $_POST["phy1"];
 
 						}
 					}
@@ -110,13 +110,13 @@ session_start();
 				}
 
 				$maths = array_values($_SESSION["maths"]);
-				$informatique = array_values($_SESSION["physics"]);
+				$Physics = array_values($_SESSION["physics"]);
 
 			for($var = count($nom)-1; $var>=0; $var--){
 				if(isset($nom[$var])){
 					$c1=$nom[$var];
 					$c2=$maths[$var];
-					$c3=$informatique[$var];
+					$c3=$Physics[$var];
 					$c4=($c3+$c2)/2;
 							if($c4<10){
 							    $Mention = 'Not validated';
@@ -152,7 +152,7 @@ session_start();
 
 			$_SESSION["name"]  = &$nom;
 			$_SESSION["maths"] = &$maths;
-			$_SESSION["physics"] = &$informatique;
+			$_SESSION["physics"] = &$Physics;
 			
 		?>
 
