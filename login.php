@@ -10,22 +10,22 @@
 
 		<?php
 
-/* 			$_identifiant="test";
-			$_motdepasse="test";
-			$_SESSION["nom"] = array();
+/* 			$_login="test";
+			$_password="test";
+			$_SESSION["name"] = array();
 			$_SESSION["maths"] = array();
-			$_SESSION["informatique"] = array();
+			$_SESSION["physics"] = array();
 
-			if($_identifiant == $_POST['identifiant'] && $_motdepasse == $_POST['motdepasse']) {
-				header("location:" . "formulaire4.php");
+			if($_login == $_POST['login'] && $_password == $_POST['password']) {
+				header("location:" . "form4.php");
 			} else
-				header("location:" . "formulaire1.html"); */
+				header("location:" . "index.html"); */
 
 			$users = array();
 
 			 if(!$fp1 =fopen("login.txt","r")){
 
-				header("location:" . "formulaire1.html");
+				header("location:" . "index.html");
 
 			} else {
 
@@ -41,9 +41,9 @@
 
 						$users = explode(';',$ligne,2);
 
-						if(((strcmp(trim($users[0]),trim($_POST['identifiant']))) == 0) && ((strcmp(trim($users[1]),trim($_POST['motdepasse']))) == 0)){
+						if(((strcmp(trim($users[0]),trim($_POST['login']))) == 0) && ((strcmp(trim($users[1]),trim($_POST['password']))) == 0)){
 
-							header("location:" . "formulaire4.php");
+							header("location:" . "form4.php");
 							fclose($fp1);
 
 						}
@@ -54,7 +54,7 @@
 
 		}
 
-			header("location:" . "formulaire1.html");
+			header("location:" . "index.html");
 
 	?>
 
