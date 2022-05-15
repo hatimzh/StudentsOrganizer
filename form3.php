@@ -10,6 +10,7 @@ session_start();
 
 	<title>Form</title>
 	<link rel="stylesheet"  href="css/page2.css">
+	<link rel="icon"  href="./css/logo.png">
   <script defer type="text/javascript" src="./script.js"></script>
 
 </head>
@@ -20,7 +21,7 @@ session_start();
 
    <?php
 
-		if(isset($_POST["modifier"])){
+		if(isset($_POST["edit"])){
 
      	   <form name="loginform" action="form4.php" method="post">
                 <table class="t2">
@@ -32,50 +33,50 @@ session_start();
                     </td>
                   </tr>
                   <tr>
-                    <td class="detail" style="width: 50%;">Etudiant</td>
-                    <td style="width: 50%;"><div class="input"><input type="text" name="nom1" placeholder="Entrer le nom" value="'.$_POST["nom"].'" readonly></div></td>
+                    <td class="detail" style="width: 50%;">Student</td>
+                    <td style="width: 50%;"><div class="input"><input type="text" name="name1" placeholder="Enter the name" value="'.$_POST["name"].'" readonly></div></td>
                   </tr>
                   <tr> 
                     <td class="detail" style="width: 50%;">Maths</td>
-                    <td><div class="input"><input type="number" step="0.25" name="math1" placeholder="Entrer une note" value="'.$_POST["math"].'"></div></td>
+                    <td><div class="input"><input type="number" step="0.25" name="math1" placeholder="Enter the mark" value="'.$_POST["math"].'"></div></td>
                   </tr>
                   <tr> 
-                    <td class="detail" style="width: 50%;">Informatique</td>
-                    <td><div class="input"><input type="number" step="0.25" name="info1" placeholder="Entrer une note" value="'.$_POST["info"].'"></div></td>
+                    <td class="detail" style="width: 50%;">Physics</td>
+                    <td><div class="input"><input type="number" step="0.25" name="phy1" placeholder="Enter the mark" value="'.$_POST["phy"].'"></div></td>
                   </tr>
                   <tr>
                     <td>
-                      <div style="text-align: center;"><input type="submit" name="resultat" value="Resultat" class="btn"></div>
+                      <div style="text-align: center;"><input type="submit" name="result" value="Result" class="btn"></div>
                     </td>
                     <td>
-                      <div style="text-align: center;"><input type="submit" name="retour" value="Annuler" class="btn"></div>
+                      <div style="text-align: center;"><input type="submit" name="back" value="Reset" class="btn"></div>
                     </td>
                   </tr>
                   </table>
 
               </form>;              
 
-		        } elseif (isset($_POST["supprimer"])) {
+		        } elseif (isset($_POST["delete"])) {
 
-                for($var = 0; $var<count($_SESSION["nom"]); $var++){
+                for($var = 0; $var<count($_SESSION["name"]); $var++){
 
-                  if($_SESSION["nom"][$var] == $_POST['nom']){
+                  if($_SESSION["name"][$var] == $_POST['name']){
 
   /*                     $requete = " DELETE FROM Notes WHERE ID = ?";
                       $req= $con->prepare($requete);
                       $req->execute(array($_POST['id1'])); */
 
-                      unset($_SESSION["nom"][$var]);
+                      unset($_SESSION["name"][$var]);
                       unset($_SESSION["maths"][$var]);
-                      unset($_SESSION["informatique"][$var]);
+                      unset($_SESSION["physics"][$var]);
 
-                      $t1 = array_values($_SESSION["nom"]);
+                      $t1 = array_values($_SESSION["name"]);
                       $t2 = array_values($_SESSION["maths"]);
-                      $t3 = array_values($_SESSION["informatique"]);
+                      $t3 = array_values($_SESSION["physics"]);
 
-                      $_SESSION["nom"] = $t1;
+                      $_SESSION["name"] = $t1;
                       $_SESSION["math"] = $t2;
-                      $_SESSION["info"] = $t3;
+                      $_SESSION["phy"] = $t3;
                       
                       }
 
@@ -83,9 +84,9 @@ session_start();
 
                 header("location:" . "form4.php"); 
 
-            } elseif (isset($_POST["imprimer"])) {
+            } elseif (isset($_POST["print"])) {
               
-              $_SESSION['var'] = array_search($_POST['nom'], $_SESSION['nom']);
+              $_SESSION['var'] = array_search($_POST['name'], $_SESSION['name']);
 
               header('Location: ./note_pdf.php');
 
