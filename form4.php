@@ -11,6 +11,7 @@ session_start();
 		<title>Page d'étudiant</title>
 		<link rel="stylesheet"  href="css/page4.css">
 		<script defer type="text/javascript" src="./script.js"></script>
+		<link rel = "icon" href = "./css/logo.png" >
 
 	</head>
 
@@ -23,31 +24,31 @@ session_start();
 		<?php
 
 			error_reporting(0);
-			$nom = &$_SESSION["nom"];
+			$nom = &$_SESSION["name"];
 			$maths = &$_SESSION["maths"];
-			$informatique = &$_SESSION["informatique"];
+			$informatique = &$_SESSION["physics"];
 
 			echo
 				'<div class="contenu">
 					<form action="form2.php" id="form1" method="post">
 						<table class="t2">
 							<tr>
-								<td style="width: 33%;"><div style="text-align: center;"><input type="submit" class="btn" value="Nouveau" name="nouveau"></div></td>
-								<td style="width: 33%;"><div style="text-align: center;"><button type="submit" class="btn" name="enregistrer" style="padding-left: 12px;">Enregistrer</button></div></td>
-								<td style="width: 33%;"><div style="text-align: center;"><button type="submit" class="btn" name="quitter">Quitter</button></div></td>
+								<td style="width: 33%;"><div style="text-align: center;"><input type="submit" class="btn" value="New" name="new"></div></td>
+								<td style="width: 33%;"><div style="text-align: center;"><button type="submit" class="btn" name="save" style="padding-left: 12px;">Save</button></div></td>
+								<td style="width: 33%;"><div style="text-align: center;"><button type="submit" class="btn" name="exit">Exit</button></div></td>
 							</tr>
 						</table>
 					</form>
 				</div>';
 
-			// Lecture du fichier
+			// File reading
 
-/* 			if(!$fp =fopen("notes.txt","r")) {
+/* 			if(!$fp =fopen("marks.txt","r")) {
 
 				$tab = array();
 
 
-				echo "Echec de l'ouverture du fichier";
+				echo "Error";
 				exit;
 
 			} else {
@@ -60,14 +61,14 @@ session_start();
 							echo 
 							
 							'<form action="form3.php" method="post">
-							<input type="text" name="nom" value="'.$tab[0].'" style="width: 16%;" readonly>
+							<input type="text" name="name" value="'.$tab[0].'" style="width: 16%;" readonly>
 							<input type="number" name="math" value="'.$tab[1].'" style="width: 16%;" readonly>
-							<input type="number" name="info" value="'.$tab[2].'" style="width: 16%;" readonly>
+							<input type="number" name="phy" value="'.$tab[2].'" style="width: 16%;" readonly>
 							<input type="number" name="result" value="'.$tab[3].'" style="width: 16%;" readonly>
 							<input type="text" name="mention" value="'.$tab[4].'" style="width: 16%;" readonly>
-							<input type="submit" name="modifier" value="M" style="width: 5%;">
-							<input type="submit" name="modifier" value="I" style="width: 5%;">
-							<input type="submit" name="supprimer" value="S" style="width: 5%;">
+							<input type="submit" name="edit" value="M" style="width: 5%;">
+							<input type="submit" name="edit" value="I" style="width: 5%;">
+							<input type="submit" name="delete" value="S" style="width: 5%;">
 							 </form>';
 
 					}	
@@ -77,17 +78,17 @@ session_start();
 				} catch(Exception $e){};
 			} */
 
-		if(isset($_POST["retour"]) or isset($_POST["annuler"])){
+		if(isset($_POST["back"]) or isset($_POST["reset"])){
 
 			header('Location: ./form4.php');
 
 		}
 			
-		if(isset($_POST["ajouter"]) && isset($_POST["nom"]) && $_POST["math"]>=0 && $_POST["info"]>=0 && $_POST["math"]<=20 && $_POST["info"]<=20){
+		if(isset($_POST["add"]) && isset($_POST["name"]) && $_POST["math"]>=0 && $_POST["phy"]>=0 && $_POST["math"]<=20 && $_POST["phy"]<=20){
 
-				$var1 = $_POST["nom"];
+				$var1 = $_POST["name"];
 				$var2 = $_POST["math"];
-				$var3 = $_POST["info"];
+				$var3 = $_POST["phy"];
 
 				$nom[] = $var1;
 				$maths[] = $var2;
@@ -95,13 +96,13 @@ session_start();
 
 				}
 
-				if(isset($_POST["resultat"]) && $_POST["math1"]>=0 && $_POST["info1"]>=0 && $_POST["math1"]<=20 && $_POST["info1"]<=20){
+				if(isset($_POST["result"]) && $_POST["math1"]>=0 && $_POST["phy1"]>=0 && $_POST["math1"]<=20 && $_POST["phy1"]<=20){
 
 					for($var = 0; $var<count($nom); $var++){
-						if($nom[$var]==$_POST["nom1"]){
+						if($nom[$var]==$_POST["name1"]){
 
 							$maths[$var] = $_POST["math1"];
-							$informatique[$var] = $_POST["info1"];
+							$informatique[$var] = $_POST["phy1"];
 
 						}
 					}
@@ -109,7 +110,7 @@ session_start();
 				}
 
 				$maths = array_values($_SESSION["maths"]);
-				$informatique = array_values($_SESSION["informatique"]);
+				$informatique = array_values($_SESSION["physics"]);
 
 			for($var = count($nom)-1; $var>=0; $var--){
 				if(isset($nom[$var])){
@@ -118,40 +119,40 @@ session_start();
 					$c3=$informatique[$var];
 					$c4=($c3+$c2)/2;
 							if($c4<10){
-							    $Mention = 'Non validee';
+							    $Mention = 'Not validated';
 							}
 							 elseif($c4>=10 && $c4<12){
-								$Mention = 'Passable';
+								$Mention = 'Standard pass';
 							}
 							 elseif($c4>=12 && $c4<14){
-								$Mention = 'Assez bien';
+								$Mention = 'Honours';
 							}
 							 elseif($c4>=14 && $c4<16){
-								$Mention = 'Bien';
+								$Mention = 'High honours';
 							}
 							 elseif($c4>=16){
-								$Mention = 'Tres bien';
+								$Mention = 'Highest honour';
 							 }
-							 else{ $Mention = 'Données manquantes'; }				 
+							 else{ $Mention = 'Data missed'; }				 
 
-					echo '<form action="formulaire3.php" method="post">
-							<input type="text" name="nom" value="'.$c1.'" style="width: 16%;" readonly>
+					echo '<form action="form3.php" method="post">
+							<input type="text" name="name" value="'.$c1.'" style="width: 16%;" readonly>
 							<input type="number" name="math" value="'.$c2.'" style="width: 16%;" readonly>
-							<input type="number" name="info" value="'.$c3.'" style="width: 16%;" readonly>
+							<input type="number" name="phy" value="'.$c3.'" style="width: 16%;" readonly>
 							<input type="number" name="result" value="'.$c4.'" style="width: 16%;" readonly>
 							<input type="text" name="mention" value="'.$Mention.'" style="width: 16%;" readonly>
-							<input type="submit" name="modifier" value="M" style="width: 5%;">
-							<input type="submit" name="imprimer" value="I" style="width: 5%;">
-							<input type="submit" name="supprimer" value="S" style="width: 5%;">
+							<input type="submit" name="edit" value="M" style="width: 5%;">
+							<input type="submit" name="print" value="I" style="width: 5%;">
+							<input type="submit" name="delete" value="S" style="width: 5%;">
 					 </form>';
 
 				}
 
 			}
 
-			$_SESSION["nom"]  = &$nom;
+			$_SESSION["name"]  = &$nom;
 			$_SESSION["maths"] = &$maths;
-			$_SESSION["informatique"] = &$informatique;
+			$_SESSION["physics"] = &$informatique;
 			
 		?>
 
