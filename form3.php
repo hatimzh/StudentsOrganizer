@@ -8,7 +8,7 @@ session_start();
 
 <head>
 
-	<title>Formulaire</title>
+	<title>Form</title>
 	<link rel="stylesheet"  href="css/page2.css">
   <script defer type="text/javascript" src="./script.js"></script>
 
@@ -22,14 +22,12 @@ session_start();
 
 		if(isset($_POST["modifier"])){
 
-        echo
-
-              '<form name="loginform" action="formulaire4.php" method="post">
+     	   <form name="loginform" action="form4.php" method="post">
                 <table class="t2">
                   <tr>        
                     <td colspan="2">  
                       <div style="text-align: center; margin-bottom: -15px;"> 
-                      <a href="formulaire1.html"><img src="css/logo.png" alt="logo" class="logo"></a>
+                      <a href="index.html"><img src="css/logo.png" alt="logo" class="logo"></a>
                       </div>
                     </td>
                   </tr>
@@ -55,7 +53,7 @@ session_start();
                   </tr>
                   </table>
 
-              </form>';              
+              </form>;              
 
 		        } elseif (isset($_POST["supprimer"])) {
 
@@ -83,7 +81,7 @@ session_start();
 
                   }
 
-                header("location:" . "formulaire4.php"); 
+                header("location:" . "form4.php"); 
 
             } elseif (isset($_POST["imprimer"])) {
               
