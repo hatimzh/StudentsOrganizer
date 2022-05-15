@@ -65,37 +65,33 @@ session_start();
 
           fclose($fp);
 
-          header("location:" . "formulaire1.html");
+          header("location:" . "index.html");
 
         } elseif(isset($_POST["quitter"])) {
 
-            echo
-
-            '<script>
+     	   <script>
 
                 if(confirm("Voulez-vous enregistrer?") == true){
 
-                    window.location.href = "formulaire4.php";
+                    window.location.href = "form4.php";
 
                 } else {
 
-                    window.location.href = "formulaire1.html";
+                    window.location.href = "index.html";
 
                 }
 
-            </script>';
+            </script>;
 
         } elseif (isset($_POST["nouveau"])){
 
-          echo
-
-          '<div class="contenu" style="margin-top: 200px;">
-          <form name="loginform" action="formulaire4.php" method="post">
+      <div class="contenu" style="margin-top: 200px;">
+          <form name="loginform" action="form4.php" method="post">
             <table class="t2">
               <tr>        
                 <td colspan="2">  
                   <div style="text-align: center; margin-bottom: -15px;"> 
-                  <a href="formulaire1.html"><img src="css/logo.png" alt="logo" class="logo"></a>
+                  <a href="index.html"><img src="css/logo.png" alt="logo" class="logo"></a>
                   </div>
                 </td>
               </tr>
@@ -122,7 +118,7 @@ session_start();
               </table>
   
           </form>
-      </div>';
+      </div>;
 
         }
 
