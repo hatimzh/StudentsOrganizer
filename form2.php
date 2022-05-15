@@ -8,9 +8,10 @@ session_start();
 
 <head>
 
-	<title>Formulaire</title>
+	<title>Form</title>
 	<link rel="stylesheet"  href="css/page2.css">
   <script defer type="text/javascript" src="./script.js"></script>
+	<link rel = "icon" href = "./css/logo.png" >
 
 </head>
 
@@ -18,42 +19,42 @@ session_start();
 
     <?php 
 
-        if(isset($_POST["enregistrer"])){
+        if(isset($_POST["save"])){
 
           $tab = array();
 
-          $fp = fopen('./notes.txt',"w+");
+          $fp = fopen('./marks.txt',"w+");
 
           $moyenne = -1;
 
           $mention = 'NULL';
 
-          for($var = 0; $var<count($_SESSION["nom"]); $var++) {
+          for($var = 0; $var<count($_SESSION["name"]); $var++) {
 
-              $tab[0]=$_SESSION["nom"][$var];
+              $tab[0]=$_SESSION["name"][$var];
               $tab[1]=$_SESSION["maths"][$var];
-              $tab[2]=$_SESSION["informatique"][$var];
+              $tab[2]=$_SESSION["physics"][$var];
 
-              $moyenne = ($_SESSION["maths"][$var] + $_SESSION["informatique"][$var]) / 2;
+              $moyenne = ($_SESSION["maths"][$var] + $_SESSION["physics"][$var]) / 2;
 
               $tab[3]=$moyenne;
 
 							if($moyenne<10){
-							    $Mention = 'Non validee';
+							    $Mention = 'Not validated';
 							}
 							 elseif($moyenne>=10 && $moyenne<12){
-								$Mention = 'Passable';
+								$Mention = 'Standard pass';
 							}
 							 elseif($moyenne>=12 && $moyenne<14){
-								$Mention = 'Assez bien';
+								$Mention = 'Honours';
 							}
 							 elseif($moyenne>=14 && $moyenne<16){
-								$Mention = 'Bien';
+								$Mention = 'High honours';
 							}
 							 elseif($moyenne>=16){
-								$Mention = 'Tres bien';
+								$Mention = 'Highest honour';
 							 }
-							 else{ $Mention = 'Données manquantes'; }	
+							 else{ $Mention = 'Data missed !!'; }	
 
 
               $tab[4]=$Mention;
@@ -67,11 +68,11 @@ session_start();
 
           header("location:" . "index.html");
 
-        } elseif(isset($_POST["quitter"])) {
+        } elseif(isset($_POST["exit"])) {
 
      	   <script>
 
-                if(confirm("Voulez-vous enregistrer?") == true){
+                if(confirm("Want to save data ?") == true){
 
                     window.location.href = "form4.php";
 
@@ -83,7 +84,7 @@ session_start();
 
             </script>;
 
-        } elseif (isset($_POST["nouveau"])){
+        } elseif (isset($_POST["new"])){
 
       <div class="contenu" style="margin-top: 200px;">
           <form name="loginform" action="form4.php" method="post">
@@ -101,18 +102,18 @@ session_start();
               </tr>
               <tr> 
                 <td class="detail" style="width: 50%;">Maths</td>
-                <td><div class="input"><input type="number" step="0.25" name="math" placeholder="Entrer une note"></div></td>
+                <td><div class="input"><input type="number" step="0.25" name="math" placeholder="Enter the mark"></div></td>
               </tr>
               <tr> 
-                <td class="detail" style="width: 50%;">Informatique</td>
-                <td><div class="input"><input type="number" step="0.25" name="info" placeholder="Entrer une note"></div></td>
+                <td class="detail" style="width: 50%;">Physics</td>
+                <td><div class="input"><input type="number" step="0.25" name="phy" placeholder="Enter the mark"></div></td>
               </tr>
               <tr>
                 <td>
-                  <div style="text-align: center;"><input type="submit" name="ajouter" value="Resultat" class="btn"></div>
+                  <div style="text-align: center;"><input type="submit" name="add" value="Result" class="btn"></div>
                 </td>
                 <td>
-                  <div style="text-align: center;"><input type="submit" name="annuler" value="Annuler" class="btn"></div>
+                  <div style="text-align: center;"><input type="submit" name="reset" value="Reset" class="btn"></div>
                 </td>
               </tr>
               </table>
