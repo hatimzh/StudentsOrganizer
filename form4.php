@@ -29,7 +29,7 @@ session_start();
 
 			echo
 				'<div class="contenu">
-					<form action="formulaire2.php" id="form1" method="post">
+					<form action="form2.php" id="form1" method="post">
 						<table class="t2">
 							<tr>
 								<td style="width: 33%;"><div style="text-align: center;"><input type="submit" class="btn" value="Nouveau" name="nouveau"></div></td>
@@ -59,7 +59,7 @@ session_start();
 
 							echo 
 							
-							'<form action="formulaire3.php" method="post">
+							'<form action="form3.php" method="post">
 							<input type="text" name="nom" value="'.$tab[0].'" style="width: 16%;" readonly>
 							<input type="number" name="math" value="'.$tab[1].'" style="width: 16%;" readonly>
 							<input type="number" name="info" value="'.$tab[2].'" style="width: 16%;" readonly>
@@ -79,7 +79,7 @@ session_start();
 
 		if(isset($_POST["retour"]) or isset($_POST["annuler"])){
 
-			header('Location: ./formulaire4.php');
+			header('Location: ./form4.php');
 
 		}
 			
