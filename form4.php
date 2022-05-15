@@ -17,7 +17,7 @@ session_start();
 	<body>
 
 		<div>
-			<h1 class="bien"><a href="./formulaire1.html" class="fancy">Notes</a></h1>
+			<h1 class="bien"><a href="./index.html" class="fancy">Notes</a></h1>
 		</div>
 
 		<?php
