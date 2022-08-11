@@ -70,56 +70,56 @@ session_start();
 
         } elseif(isset($_POST["exit"])) {
 
-     	   <script>
+     	   echo "<script>
 
-                if(confirm("Want to save data ?") == true){
+                if(confirm(\"Want to save data ?\") == true){
 
-                    window.location.href = "form4.php";
+                    window.location.href = \"form4.php\";
 
                 } else {
 
-                    window.location.href = "index.html";
+                    window.location.href = \"index.html\";
 
                 }
 
-            </script>;
+            </script>;" ;
 
         } elseif (isset($_POST["new"])){
 
-      <div class="contenu" style="margin-top: 200px;">
-          <form name="loginform" action="form4.php" method="post">
-            <table class="t2">
+      echo "<div class=\"contenu\" style=\"margin-top: 200px;\">
+          <form name=\"loginform\" action=\"form4.php\" method=\"post\">
+            <table class=\"t2\">
               <tr>        
-                <td colspan="2">  
-                  <div style="text-align: center; margin-bottom: -15px;"> 
-                  <a href="index.html"><img src="css/logo.png" alt="logo" class="logo"></a>
+                <td colspan=\"2\">  
+                  <div style=\"text-align: center; margin-bottom: -15px;\"> 
+                  <a href=\"index.html\"><img src=\"css/logo.png\" alt=\"logo\" class=\"logo\"></a>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td class="detail" style="width: 50%;">Etudiant</td>
-                <td style="width: 50%;"><div class="input"><input type="text" name="nom" placeholder="Entrer le nom"></div></td>
+                <td class=\"detail\" style=\"width: 50%;\">Etudiant</td>
+                <td style=\"width: 50%;\"><div class=\"input\"><input type=\"text\" name=\"nom\" placeholder=\"Entrer le nom\"></div></td>
               </tr>
               <tr> 
-                <td class="detail" style="width: 50%;">Maths</td>
-                <td><div class="input"><input type="number" step="0.25" name="math" placeholder="Enter the mark"></div></td>
+                <td class=\"detail\" style=\"width: 50%;\">Maths</td>
+                <td><div class=\"input\"><input type=\"number\" step=\"0.25\" name=\"math\" placeholder=\"Enter the mark\"></div></td>
               </tr>
               <tr> 
-                <td class="detail" style="width: 50%;">Physics</td>
-                <td><div class="input"><input type="number" step="0.25" name="phy" placeholder="Enter the mark"></div></td>
+                <td class=\"detail\" style=\"width: 50%;\">Physics</td>
+                <td><div class=\"input\"><input type=\"number\" step=\"0.25\" name=\"phy\" placeholder=\"Enter the mark\"></div></td>
               </tr>
               <tr>
                 <td>
-                  <div style="text-align: center;"><input type="submit" name="add" value="Result" class="btn"></div>
+                  <div style=\"text-align: center;\"><input type=\"submit\" name=\"add\" value=\"Result\" class=\"btn\"></div>
                 </td>
                 <td>
-                  <div style="text-align: center;"><input type="submit" name="reset" value="Reset" class="btn"></div>
+                  <div style=\"text-align: center;\"><input type=\"submit\" name=\"reset\" value=\"Reset\" class=\"btn\"></div>
                 </td>
               </tr>
               </table>
   
           </form>
-      </div>;
+      </div>;";
 
         }
 
