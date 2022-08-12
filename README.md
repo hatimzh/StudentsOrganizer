@@ -1,2 +1,2 @@
 # StudantsGen
-Generation of studamts marks
+Easy and simple site to organisate students marks.
