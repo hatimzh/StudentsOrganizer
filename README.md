@@ -1,2 +1,2 @@
-# StudantsGen
-Easy and simple Website to organisate students marks.
+# StudantsOrganizer
+Easy and simple platform to manage students marks.
