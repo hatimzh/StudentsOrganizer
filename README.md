@@ -1,2 +1,2 @@
 # StudantsOrganizer
-Easy and simple platform to manage students marks.
+Easy and simple platform to manage students and their marks.
